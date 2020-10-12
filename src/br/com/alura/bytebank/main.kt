@@ -1,10 +1,16 @@
 package br.com.alura.bytebank
 
 import br.com.alura.bytebank.modelo.Endereco
+import java.lang.ArithmeticException
+import java.lang.ClassCastException
 
 fun main() {
     println("início main")
-    10/0
+    try {
+        10 / 0
+    }catch (e: ArithmeticException){
+        println("ArithmeticException foi pegada")
+    }
     funcao1()
     println("fim main")
 }
@@ -20,7 +26,11 @@ fun funcao2() {
     for (i in 1..5){
         println(i)
         val endereco = Any()
-        endereco as Endereco //casting que gera exception
+        try {
+            endereco as Endereco //casting que gera exception
+        }catch (e: ClassCastException){
+            println("ClassCastException foi pegada")
+        }
     }
     println("fim funcao2")
 }
