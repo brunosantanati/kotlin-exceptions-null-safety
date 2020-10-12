@@ -21,14 +21,16 @@ fun main() {
         null
     }*/
 
-    val valorComTaxa: Double? = when {
+/*    val valorComTaxa: Double? = when {
         valorRecebido != null -> {
             valorRecebido + 0.1
         }
         else -> {
             null
         }
-    }
+    }*/
+
+    val valorComTaxa: Double? = valorComTaxa(valorRecebido)
 
     if(valorComTaxa != null){
         println("valor recebido: $valorComTaxa")
@@ -62,4 +64,11 @@ fun funcao2() {
         endereco as Endereco //casting que gera exception
     }
     println("fim funcao2")
+}
+
+fun valorComTaxa(valorRecebido: Double?): Double? {
+    if (valorRecebido != null) {
+        return valorRecebido + 0.1
+    }
+    return null
 }
