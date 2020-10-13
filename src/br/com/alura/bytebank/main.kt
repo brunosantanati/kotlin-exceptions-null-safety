@@ -26,8 +26,7 @@ fun funcao2() {
     println("início funcao2")
     for (i in 1..5){
         println(i)
-        val endereco = Any()
-        endereco as Endereco //casting que gera exception
+        throw ClassCastException()
     }
     println("fim funcao2")
 }
