@@ -38,4 +38,4 @@ fun valorComTaxa(valorRecebido: Double?): Double? {
     return null
 }
 
-class SaldoInsuficienteException : Throwable()
+class SaldoInsuficienteException : Throwable("O saldo é insuficiente")
