@@ -1,28 +1,23 @@
 package br.com.alura.bytebank
 
-import br.com.alura.bytebank.modelo.Endereco
+import br.com.alura.bytebank.exception.SaldoInsuficienteException
 
 fun main() {
     println("início main")
-    teste() //simulando java.lang.StackOverflowError com recursão
     funcao1()
     println("fim main")
-}
-
-fun teste(){
-    teste()
 }
 
 fun funcao1(){
     println("início funcao1")
     try{
         funcao2()
-    }catch (e: ClassCastException){
+    }catch (e: SaldoInsuficienteException){
+        println("SaldoInsuficienteException foi pega")
         println(e.message)
         println(e.stackTrace)
         println(e.cause)
         e.printStackTrace()
-        println("ClassCastException foi pega")
     }
     println("fim funcao1")
 }
@@ -42,5 +37,3 @@ fun valorComTaxa(valorRecebido: Double?): Double? {
     }
     return null
 }
-
-class SaldoInsuficienteException : Throwable("O saldo é insuficiente")
