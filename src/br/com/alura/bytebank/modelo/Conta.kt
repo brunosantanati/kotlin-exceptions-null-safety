@@ -2,6 +2,7 @@ package br.com.alura.bytebank.modelo
 
 import br.com.alura.bytebank.exception.FalhaAutenticacaoException
 import br.com.alura.bytebank.exception.SaldoInsuficienteException
+import java.lang.RuntimeException
 
 abstract class Conta(
     var titular: Cliente,
@@ -39,6 +40,7 @@ abstract class Conta(
         if(!autentica(senha)){
             throw FalhaAutenticacaoException()
         }
+        throw RuntimeException() //simulando exception inesperada
 
         saldo -= valor
         destino.deposita(valor)
