@@ -4,8 +4,13 @@ import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
     println("início main")
+    teste() //simulando java.lang.StackOverflowError com recursão
     funcao1()
     println("fim main")
+}
+
+fun teste(){
+    teste()
 }
 
 fun funcao1(){
