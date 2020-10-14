@@ -28,7 +28,8 @@ abstract class Conta(
 
     fun transfere(valor: Double, destino: Conta) {
         if(saldo < valor){
-            throw SaldoInsuficienteException()
+            throw SaldoInsuficienteException(
+                mensagem = "O saldo é insuficiente, saldo atual: $saldo, valor a ser subtraído: $valor")
         }
         saldo -= valor
         destino.deposita(valor)
