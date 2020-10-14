@@ -26,7 +26,7 @@ fun funcao2() {
     println("início funcao2")
     for (i in 1..5){
         println(i)
-        throw ClassCastException()
+        throw SaldoInsuficienteException()
     }
     println("fim funcao2")
 }
@@ -37,3 +37,5 @@ fun valorComTaxa(valorRecebido: Double?): Double? {
     }
     return null
 }
+
+class SaldoInsuficienteException : Throwable()
