@@ -5,9 +5,9 @@ import br.com.alura.bytebank.exception.SaldoInsuficienteException
 import java.lang.RuntimeException
 
 abstract class Conta(
-    var titular: Cliente,
+    val titular: Cliente,
     val numero: Int
-): Autenticavel {
+): Autenticavel by titular { //delegação de propriedade (Property delegation)
     var saldo = 0.0
         protected set
     companion object {
@@ -18,10 +18,6 @@ abstract class Conta(
     init {
         println("Criando conta")
         total++
-    }
-
-    override fun autentica(senha: Int): Boolean {
-        return titular.autentica(senha)
     }
 
     fun deposita(valor: Double) {
@@ -40,7 +36,6 @@ abstract class Conta(
         if(!autentica(senha)){
             throw FalhaAutenticacaoException()
         }
-        throw RuntimeException() //simulando exception inesperada
 
         saldo -= valor
         destino.deposita(valor)
