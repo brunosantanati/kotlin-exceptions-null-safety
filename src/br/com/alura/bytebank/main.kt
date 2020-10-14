@@ -2,11 +2,26 @@ package br.com.alura.bytebank
 
 import br.com.alura.bytebank.modelo.Endereco
 
+//doc link: https://kotlinlang.org/docs/reference/null-safety.html
+
 fun main() {
     var enderecoNulo: Endereco? = null
-    val enderecoNaoNulo: Endereco = enderecoNulo!! //lança kotlin.KotlinNullPointerException ao tentar converter endereco de Endereco? para Endereco
-    enderecoNaoNulo.logradouro
+    println(enderecoNulo?.logradouro) //imprime null devido ao uso do safe call operator
+    println(enderecoNulo?.logradouro?.length)
 
-    var e: Endereco? = null
-    //e.logradouro //Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type Endereco?
+    enderecoNulo?.let {endereco: Endereco ->
+        println("Entrou aqui")
+        println(endereco.logradouro.length)
+    }
+
+    //------------------------------------------------
+
+    var enderecoNaoNulo: Endereco? = Endereco(logradouro = "Rua Vergueiro")
+    println(enderecoNaoNulo?.logradouro)
+    println(enderecoNaoNulo?.logradouro?.length)
+
+    enderecoNaoNulo?.let {endereco: Endereco ->
+        println("Entrou aqui 2")
+        println(endereco.logradouro.length)
+    }
 }
