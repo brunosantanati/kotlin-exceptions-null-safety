@@ -1,6 +1,5 @@
 package br.com.alura.bytebank.teste
 
-import br.com.alura.bytebank.valorComTaxa
 import java.lang.NumberFormatException
 
 fun testaExpressao() {
@@ -35,4 +34,11 @@ fun testaExpressao() {
     } else {
         println("valor inválido")
     }
+}
+
+fun valorComTaxa(valorRecebido: Double?): Double? {
+    if (valorRecebido != null) {
+        return valorRecebido + 0.1
+    }
+    return null
 }
